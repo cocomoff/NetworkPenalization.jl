@@ -1,0 +1,12 @@
+name = "NetworkPenalization"
+uuid = "9d16a2c5-eeb4-4b22-924f-7c7e3254ca33"
+authors = ["cocomoff <keisuke.otaki.jp@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+FileIO = "5789e2e9-d7fb-5bc7-8068-2c6fae9b9549"
+Graphs = "86223c79-3864-5bf0-83f7-82e725a168b6"
+JLD2 = "033835bb-8acc-5ee8-8aae-3f567f8a3819"
+Measures = "442fdcdd-2543-5da2-b0f3-8c86c306513e"
+Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
+Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
