@@ -12,13 +12,13 @@ Input
 
 Output
 =====
-    - ps::MultiPath{T}, set of k s-t paths.
+    - ps::MultiPath, set of k s-t paths.
 """
 function path_penalization(
     g::Graph, s::Int, t::Int, k::Int=3,
     p::Float64=0.1, d::AbstractMatrix=weights(g))
 
-    returnset = []
+    returnset = Path[]
 
     # Weights for computation
     W = zeros(nv(g), nv(g))

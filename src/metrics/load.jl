@@ -3,13 +3,13 @@ Compute edge load (`Def. 5.1`).
 
 Input
 =====
-    - ps::MultiPath{T}: a set of paths in G.
+    - ps::MultiPath: a set of paths in G.
 
 Output
 =====
-    - counter::Counter{Tuple{T, T}, Int}: the number of paths in ps that contains edges (i.e., Tuple{T, T}).
+    - counter::Counter{Tuple{Int, Int}, Int}: the number of paths in ps that contains edges.
 """
-function edge_load(ps::MultiPath{T}) where {T <: Real}
+function edge_load(ps::MultiPath)
     counter = Dict()
     for path in ps
         for i in 1:num_edge(path)
@@ -26,13 +26,13 @@ Compute edge load entropy (`Def. 5.2`).
 
 Input
 =====
-    - ps::MultiPath{T}: a set of paths in G.
+    - ps::MultiPath: a set of paths in G.
 
 Output
 =====
     - ele::Float64, the computed edge load entropy value.
 """
-function edge_load_entropy(ps::MultiPath{T}) where {T <: Real}
+function edge_load_entropy(ps::MultiPath)
     ele = 0.0
     counter = edge_load(ps)
     for (_, value) in counter

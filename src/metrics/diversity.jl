@@ -4,7 +4,7 @@ Compute the diversity value following `Def. 3.3`.
 Input
 =====
     - g::Graph
-    - ps::MultiPath{T}
+    - ps::MultiPath
     - d::AbstractMatrix
 
 Output
@@ -12,11 +12,11 @@ Output
     - div(ps)::Float64
 
 """
-function diversity(g::Graph, ps::MultiPath{T}, d::AbstractMatrix=weights(g)) where {T <: Real}
+function diversity(g::Graph, ps::MultiPath, d::AbstractMatrix=weights(g))
     # Check (s, t) constraint
     path = collect(ps)[begin]
-    allS = Set{T}(path[begin] for path in ps)
-    allE = Set{T}(path[end] for path in ps)
+    allS = Set(path[begin] for path in ps)
+    allE = Set(path[end] for path in ps)
     @assert length(allS) == 1
     @assert length(allE) == 1
     
@@ -28,7 +28,7 @@ function diversity(g::Graph, ps::MultiPath{T}, d::AbstractMatrix=weights(g)) whe
     denom = shortest_path_distance(g, path_st, d)
 
     # numer
-    allEdge = Set{Tuple{T, T}}()
+    allEdge = Set()
     for path in ps
         for i in 1:num_edge(path)
             push!(allEdge, (path[i], path[i + 1]))

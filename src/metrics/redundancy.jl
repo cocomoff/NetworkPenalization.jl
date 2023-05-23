@@ -4,19 +4,19 @@ Compute the redundancy (`Def. 5.3`)
 Input
 =====
     - g::Graph
-    - ps::MultiPath{T}
+    - ps::MultiPath
     - d::AbstractMatrix
 
 Output
 =====
     - red(ps)::Float64
 """
-function redundancy(g::Graph, ps::MultiPath{T}, d::AbstractMatrix=weights(g)) where {T <: Real}
+function redundancy(g::Graph, ps::MultiPath, d::AbstractMatrix=weights(g))
     # numer
     numer = sum(shortest_path_distance(g, path, d) for path in ps)
 
     # denom
-    allEdge = Set{Tuple{T, T}}()
+    allEdge = Set()
     for path in ps
         for i in 1:num_edge(path)
             push!(allEdge, (path[i], path[i + 1]))

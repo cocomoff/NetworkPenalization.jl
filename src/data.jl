@@ -1,9 +1,9 @@
 """
-Path consists of vertices of type T.
+Path consists of vertices.
 """
-const Path{T} = Array{T, 1} where T
+const Path = Vector{Int}
 
 """
-PathSet consists of multiple paths of Path{T}.
+PathSet consists of multiple paths of Path.
 """
-const MultiPath{T} = Vector{Path{T}} where T
+const MultiPath = Vector{Path}
